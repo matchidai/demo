@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "types": ["vite/client"],
+      "target": "esnext",
+      "module": "esnext",
+      "declaration": true,
+      "declarationDir": "./dist",
+      "outDir": "./dist",
+      "strict": true,
+      "jsx": "react-jsx",
+      "moduleResolution": "bundler",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "resolveJsonModule": true,
+      "forceConsistentCasingInFileNames": true,
+      "baseUrl": "./",
+      "paths": {
+        "@/*": ["src/*"]
+      }
+    },
+    "include": ["src"]
+  }
+  
