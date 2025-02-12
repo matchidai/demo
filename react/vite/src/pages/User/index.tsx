@@ -136,21 +136,5 @@ export default function User() {
             console.log('useMatchEvents.onBind', data)
         }
     })
-    return <div>
-
-        <div className={`font-bold text-lg`}>LoginButton</div>
-
-        <div className={`bg-gray-100 p-5 mt-5`}>
-            <LoginButton
-                methods={LoginMethodList}
-                recommendMethods={RecommendLoginMethodList}
-                popoverPosition={"left"}
-                walletMethods={WalletList}
-            />
-        </div>
-
-        <LoginContent/>
-
-
-    </div>
+    return <LoginContent/>
 }
