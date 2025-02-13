@@ -946,10 +946,10 @@
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.0.0"
 
-"@matchain/matchid-sdk-react@0.1.44-alpha.5":
-  version "0.1.44-alpha.5"
-  resolved "https://registry.yarnpkg.com/@matchain/matchid-sdk-react/-/matchid-sdk-react-0.1.44-alpha.5.tgz#c470725e1f3eb0e8fbdd5d688857aa5c1df99a38"
-  integrity sha512-7ErUSENyNK78gy0XrkVgU7XoTtVVP1Ew6fskfkrq7UmAxq8mzX6JTnJ+FaARWnzzGpnLR5nI2B3Ij6WMJ0G7dA==
+"@matchain/matchid-sdk-react@0.1.44-alpha.8":
+  version "0.1.44-alpha.8"
+  resolved "https://registry.yarnpkg.com/@matchain/matchid-sdk-react/-/matchid-sdk-react-0.1.44-alpha.8.tgz#2394b31ab20022e57f6e0706d2ca1d1a86124c13"
+  integrity sha512-fH5j9Q/etIyTXqSG4K3DbibhMpmyRJjTzSpr5NjLCQ+SrgaqY88W0JWsZFx85NoAGVqRQYfy2luV7jP2SU2iEA==
   dependencies:
     "@solana/wallet-adapter-react" "0.15.35"
     "@solana/wallet-adapter-react-ui" "0.9.35"
