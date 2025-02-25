@@ -946,10 +946,10 @@
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.0.0"
 
-"@matchain/matchid-sdk-react@0.1.46-alpha.3":
-  version "0.1.46-alpha.3"
-  resolved "https://registry.yarnpkg.com/@matchain/matchid-sdk-react/-/matchid-sdk-react-0.1.46-alpha.3.tgz#b2183dfd230a53aa26748017ad2ee19e237d2cea"
-  integrity sha512-g7QOacE+s9uffKDgwzqckTAfH3lnqBUdkNeWi0LoZSeS2xtTbrg0h+sBBLX1SzdN4qiTgIzenhynlQQWMxsXfg==
+"@matchain/matchid-sdk-react@0.1.50-alpha.0":
+  version "0.1.50-alpha.0"
+  resolved "https://registry.yarnpkg.com/@matchain/matchid-sdk-react/-/matchid-sdk-react-0.1.50-alpha.0.tgz#7d3cd1bf642a9cab52cc4dc736127a5d32ca0dbb"
+  integrity sha512-aOolXwtuNbcMHU8YUUMUqlEvLlcYc1LqFNTOkN3lyG7PVwzQH6thfEoyQkHlJD+COrMbgKQzsIcdeu3YeD7tuQ==
   dependencies:
     "@solana/wallet-adapter-react" "0.15.35"
     "@solana/wallet-adapter-react-ui" "0.9.35"
@@ -961,7 +961,10 @@
     axios-retry "^4.5.0"
     copy-to-clipboard "^3.3.3"
     ethers "^5.7.2"
+    moment "^2.30.1"
+    react-infinite-scroll-component "^6.1.0"
     react-intl "^7.1.0"
+    react-qrcode "^0.3.6"
     react-router-dom "^6.0.0"
     sats-connect "^3.0.1"
     siwe "^2.3.2"
@@ -5085,6 +5088,11 @@ mipd@0.0.7:
   resolved "https://registry.yarnpkg.com/mipd/-/mipd-0.0.7.tgz#bb5559e21fa18dc3d9fe1c08902ef14b7ce32fd9"
   integrity sha512-aAPZPNDQ3uMTdKbuO2YmAw2TxLHO0moa4YKAyETM/DTj5FloZo+a+8tU+iv4GmW+sOxKLSRwcSFuczk+Cpt6fg==
 
+moment@^2.30.1:
+  version "2.30.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
+  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
+
 motion@10.16.2:
   version "10.16.2"
   resolved "https://registry.yarnpkg.com/motion/-/motion-10.16.2.tgz#7dc173c6ad62210a7e9916caeeaf22c51e598d21"
@@ -5744,6 +5752,13 @@ react-dom@^18.0.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
 
+react-infinite-scroll-component@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroll-component/-/react-infinite-scroll-component-6.1.0.tgz#7e511e7aa0f728ac3e51f64a38a6079ac522407f"
+  integrity sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==
+  dependencies:
+    throttle-debounce "^2.1.0"
+
 react-intl@^7.1.0:
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-7.1.6.tgz#ed7b3bdd5790647a4c941251ab83fa10f0570fda"
@@ -5786,6 +5801,11 @@ react-qr-reader@^2.2.1:
     jsqr "^1.2.0"
     prop-types "^15.7.2"
     webrtc-adapter "^7.2.1"
+
+react-qrcode@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/react-qrcode/-/react-qrcode-0.3.6.tgz#a47652a52f1f42640a64be97196c56b2a5077061"
+  integrity sha512-F905AAyNu/gyhsp321FW21WDLwQ/di3qBsqolCwiuRnj8VXewanhp1YtHMiEi/h/1F6GkYd0lj+g/Vc64L6ihQ==
 
 react-refresh@^0.14.2:
   version "0.14.2"
@@ -6416,6 +6436,11 @@ thread-stream@^0.15.1:
   integrity sha512-UkEhKIg2pD+fjkHQKyJO3yoIvAP3N6RlNFt2dUhcS1FGvCD1cQa1M/PGknCLFIyZdtJOWQjejp7bdNqmN7zwdA==
   dependencies:
     real-require "^0.1.0"
+
+throttle-debounce@^2.1.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
+  integrity sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==
 
 "through@>=2.2.7 <3":
   version "2.3.8"

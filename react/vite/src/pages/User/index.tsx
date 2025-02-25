@@ -8,6 +8,7 @@ import {
 } from "@matchain/matchid-sdk-react/components";
 import BindListModal from "@/pages/User/components/BindListModal";
 import PohListModal from "@/pages/User/components/PohListModal";
+import ChainListModal from "@/pages/Wallet/components/ChainListModal";
 import ButtonGroup from "@/components/ButtonGroup";
 
 

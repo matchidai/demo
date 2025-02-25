@@ -11,8 +11,9 @@ import {LocaleType} from "@matchain/matchid-sdk-react/types";
 import {useUserInfo} from "@matchain/matchid-sdk-react/hooks";
 import RoutePrivate from "@/components/RoutePrivate";
 import useLocalStore from "@/store/useLocalStore";
-import {LoginButton}     from "@matchain/matchid-sdk-react/components";
+import {LoginButton} from "@matchain/matchid-sdk-react/components";
 import UI from "@/pages/UI";
+import TgApp from "@/pages/TgApp";
 
 
 function Nav() {
@@ -36,6 +37,11 @@ function Nav() {
                 onActive: location.pathname === '/ui'
             },
             {
+                name: 'TgApp',
+                url: '/tgapp',
+                onActive: location.pathname === '/tgapp'
+            },
+            {
                 name: 'User',
                 url: '/user',
                 onActive: location.pathname === '/user'
@@ -49,13 +55,17 @@ function Nav() {
         ]
         return list
     }, [location.pathname, isLogin])
-    return <nav className={`text-2xl mb-5 p-2 text-red-600 flex gap-10`}>
-        {menus.map((menu) => {
-            return <Link key={menu.url} to={menu.url}
-                         className={`text-2xl ${menu.onActive ? 'text-red-600' : 'text-gray-400'}`}>{menu.name}</Link>
-        })}
-        <LoginButton/>
-    </nav>
+    return <>
+        <nav className={`text-2xl mb-5 p-2 text-red-600 flex gap-10 flex-wrap`}>
+            {menus.map((menu) => {
+                return <Link key={menu.url} to={menu.url}
+                             className={`text-2xl ${menu.onActive ? 'text-red-600' : 'text-gray-400'} ${menu.hidden?'hidden' :''}`}>{menu.name}</Link>
+            })}
+
+            <LoginButton/>
+        </nav>
+
+    </>
 }
 
 function RouterApp() {
@@ -96,6 +106,7 @@ function RouterApp() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/ui" element={<UI/>}/>
+                <Route path="/tgapp" element={<TgApp/>}/>
                 <Route element={<RoutePrivate/>}>
                     <Route path="/user" element={<User/>}/>
                     <Route path="/wallet" element={<Wallet/>}/>
