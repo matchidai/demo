@@ -23,7 +23,8 @@ function LoginContent() {
         bind,
         auth,
         bindCex,
-        getAuthInfo
+        getAuthInfo,
+        overview
     } = useUserInfo();
     const [usernameOpen, setUsernameOpen] = useState(false)
     const [modal, setModal] = useState<'bindList' | 'pohList' | ''>('')
@@ -45,6 +46,7 @@ function LoginContent() {
         <h1 className={`text-2xl`}>You are already logged in</h1>
         <div className={`text-ellipsis break-words`}>token:{token}</div>
         <div className={`text-ellipsis break-words`}>username:{username}</div>
+        <div className={`text-ellipsis break-words`}>recover_type:{overview?.recover_type}</div>
         <div className={`text-ellipsis break-words`}>did:{did}</div>
         <div className={`text-ellipsis break-words`}>address:{address}</div>
 
@@ -91,7 +93,13 @@ function LoginContent() {
             {
                 Object.keys(LOGIN_METHOD_MAP).map((method) => {
                     return <button key={method} className={`bg-gray-300 p-1 capitalize rounded`}
-                                   onClick={() => getAuthInfo(method as keyof typeof LOGIN_METHOD_MAP)}>{LOGIN_METHOD_MAP[method as keyof typeof LOGIN_METHOD_MAP]}
+                                   onClick={async () => {
+                                       try {
+                                           await getAuthInfo(method as keyof typeof LOGIN_METHOD_MAP)
+                                       } catch (error: any) {
+                                           console.error(error, typeof error, error.toString())
+                                       }
+                                   }}>{LOGIN_METHOD_MAP[method as keyof typeof LOGIN_METHOD_MAP]}
                     </button>
                 })
             }

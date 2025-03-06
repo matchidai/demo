@@ -307,7 +307,7 @@ function ERC20() {
         return formatUnits(balanceQuery.data,decimalsQuery.data)
     },[balanceQuery.data,decimalsQuery.data])
 
-    console.log(balanceQuery,symbolQuery,decimalsQuery)
+    // console.log(balanceQuery,symbolQuery,decimalsQuery)
 
     function Transfer(){
         const [to, setTo] = useState(address)

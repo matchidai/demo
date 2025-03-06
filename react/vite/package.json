@@ -13,7 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@matchain/matchid-sdk-react": "0.1.50",
+    "@matchain/matchid-sdk-react": "0.1.53-alpha.16",
     "@zerodev/webauthn-key": "5.3.3",
     "axios": "^1.7.9",
     "eruda": "^3.4.1",

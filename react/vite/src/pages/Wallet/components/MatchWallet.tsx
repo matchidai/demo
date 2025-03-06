@@ -46,7 +46,7 @@ export default function MatchWallet() {
                 <Button size={"sm"} onClick={wallet.showImportTokenModal}>showImportToken</Button>
                 <Button size={"sm"} onClick={wallet.showSendListModal}>showSendListModal</Button>
             </ButtonGroup>
-            <div className={`mt-[100px] gap-[20px] grid grid-cols-2`}>
+            <div className={`mt-[100px] gap-[20px] grid grid-cols-1 md:grid-cols-2`}>
                 <WalletAsset onAssetClick={onAssetClick}/>
                 <TransactionList/>
             </div>

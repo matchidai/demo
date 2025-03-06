@@ -14,6 +14,14 @@ export default function Login(){
     const [code, setCode] = React.useState('')
     const [emailOpen, setEmailOpen] = React.useState(false)
     const [loginOpen, setLoginOpen] = React.useState(false)
+    const onSendEmail = async () => {
+
+        try{
+            await getLoginEmailCode(email)
+        }catch(error:any){
+            console.error('qwe-error',error)
+        }
+    }
 
 
     return (
@@ -52,7 +60,7 @@ export default function Login(){
                 <input type={"text"} className={`border`} placeholder={"email"}
                        onChange={(e) => setEmail(e.target.value)} value={email}/>
                 <button className={`bg-gray-300 p-1 rounded`}
-                        onClick={() => getLoginEmailCode(email)}>Send
+                        onClick={onSendEmail}>Send
                 </button>
             </div>
             <div className={`flex gap-5`}>

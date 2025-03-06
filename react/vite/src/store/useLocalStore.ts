@@ -9,17 +9,24 @@ interface StoreState {
         auth: string;
     }
     locale: LocaleType;
+    walletType:"Base" | "UserPasscode";
+    setWalletType: (walletType: "Base" | "UserPasscode") => void;
+    color:string,
+    backgroundColor:string,
 
 
     setAppid: (appid: string) => void;
     setEndpoints: (endpoints: StoreState['endpoints']) => void
     setLocale: (locale: LocaleType) => void
+    setColor: (color: string) => void
+    setBackgroundColor: (backgroundColor: string) => void
 
     initChainId: number;
     setInitChainId: (initChainId: number) => void
 
     erc20Address: string;
     setErc20Address: (erc20Address: string) => void;
+
 
 }
 
@@ -34,6 +41,12 @@ const persistedState = persist<StoreState>(
         setAppid: (appid: string) => set({appid: appid}),
         setEndpoints: (endpoints: StoreState['endpoints']) => set({endpoints}),
         setLocale: (locale: LocaleType) => set({locale}),
+        walletType: "UserPasscode",
+        setWalletType: (walletType: "Base" | "UserPasscode") => set({walletType}),
+        color: '#000000',
+        setColor: (color: string) => set({color}),
+        backgroundColor: '#ffffff',
+        setBackgroundColor: (backgroundColor: string) => set({backgroundColor}),
 
         initChainId:1,
         setInitChainId: (initChainId: number) => set({initChainId}),

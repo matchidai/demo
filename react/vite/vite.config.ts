@@ -5,9 +5,11 @@ import * as path from 'path';
 import {nodePolyfills} from "vite-plugin-node-polyfills";
 
 export default defineConfig({
-  plugins: [react(), nodePolyfills({
+  plugins: [react(),
+    nodePolyfills({
     protocolImports: true,
-  }),],
+  }),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),

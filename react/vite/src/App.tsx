@@ -14,6 +14,7 @@ import useLocalStore from "@/store/useLocalStore";
 import {LoginButton} from "@matchain/matchid-sdk-react/components";
 import UI from "@/pages/UI";
 import TgApp from "@/pages/TgApp";
+import Contact from "./pages/Contact";
 
 
 function Nav() {
@@ -51,6 +52,12 @@ function Nav() {
                 url: '/wallet',
                 onActive: location.pathname === '/wallet',
                 hidden: !isLogin
+            },
+            {
+                name: 'Contact',
+                url: '/contact',
+                onActive: location.pathname === '/contact',
+                hidden: !isLogin
             }
         ]
         return list
@@ -59,7 +66,7 @@ function Nav() {
         <nav className={`text-2xl mb-5 p-2 text-red-600 flex gap-10 flex-wrap`}>
             {menus.map((menu) => {
                 return <Link key={menu.url} to={menu.url}
-                             className={`text-2xl ${menu.onActive ? 'text-red-600' : 'text-gray-400'} ${menu.hidden?'hidden' :''}`}>{menu.name}</Link>
+                             className={`text-2xl ${menu.onActive ? 'text-red-600' : 'text-gray-400'} ${menu.hidden ? 'hidden' : ''}`}>{menu.name}</Link>
             })}
 
             <LoginButton/>
@@ -69,10 +76,34 @@ function Nav() {
 }
 
 function RouterApp() {
-    const {appid, setAppid, locale, setLocale, endpoints, setEndpoints} = useLocalStore()
+    const {
+        appid,
+        setAppid,
+        locale,
+        setLocale,
+        endpoints,
+        setEndpoints,
+        setWalletType,
+        walletType,
+        backgroundColor,
+        setBackgroundColor,
+        color,
+        setColor
+    } = useLocalStore()
 
     return <Router>
         <div className={`mb-2 p-2 flex gap-2 flex-col`}>
+            <div>
+                <label>BackgroundColor:</label>
+                <input value={backgroundColor} placeholder={"BackgroundColor"} className={"border-solid border"}
+                       onChange={(ele) => {
+                           setBackgroundColor(ele.target.value)
+                       }}/></div>
+            <div>
+                <label>Color:</label>
+                <input value={color} placeholder={"Color"} className={"border-solid border"} onChange={(ele) => {
+                    setColor(ele.target.value)
+                }}/></div>
             <div>
                 <label>Appid:</label>
                 <input value={appid} placeholder={"Appid"} className={"border-solid border"} onChange={(ele) => {
@@ -100,6 +131,14 @@ function RouterApp() {
                     {LocaleList.map((item) => <option key={item} value={item}>{item}</option>)}
                 </select>
             </div>
+            <div>
+                <label>WalletType:</label>
+                <select onChange={(ele) => {
+                    setWalletType(ele.target.value as any)
+                }} value={walletType}>
+                    {['Base', 'UserPasscode'].map((item) => <option key={item} value={item}>{item}</option>)}
+                </select>
+            </div>
         </div>
         <Nav/>
         <div className={`p-4`}>
@@ -110,6 +149,7 @@ function RouterApp() {
                 <Route element={<RoutePrivate/>}>
                     <Route path="/user" element={<User/>}/>
                     <Route path="/wallet" element={<Wallet/>}/>
+                    <Route path="/contact" element={<Contact/>}/>
                 </Route>
             </Routes>
         </div>
@@ -117,9 +157,12 @@ function RouterApp() {
 }
 
 function App() {
-    const {appid, locale, endpoints} = useLocalStore()
+    const {appid, locale, endpoints, walletType, backgroundColor, color} = useLocalStore()
 
-    return <MatchProvider
+    return <div style={{
+        backgroundColor: backgroundColor,
+        color: color
+    }}><MatchProvider
         appid={appid}
         endpoints={endpoints}
         locale={locale}
@@ -132,11 +175,12 @@ function App() {
             }
         }}
         wallet={{
-            type: "UserPasscode"
+            type: walletType
         }}
     >
         <RouterApp/>
-    </MatchProvider>;
+    </MatchProvider>
+    </div>;
 }
 
 export default App;
