@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from "react";
-import {MatchProvider} from "@matchain/matchid-sdk-react";
+import {MatchProvider, wagmiConfig} from "@matchain/matchid-sdk-react";
 import {BrowserRouter as Router, Routes, Route, Link, useLocation} from 'react-router-dom';
 import Home from "./pages/Home";
 import './app.css'
@@ -15,17 +15,8 @@ import {LoginButton} from "@matchain/matchid-sdk-react/components";
 import UI from "@/pages/UI";
 import TgApp from "@/pages/TgApp";
 import Contact from "./pages/Contact";
-import {getDefaultConfig, RainbowKitProvider} from "@rainbow-me/rainbowkit";
-import {
-    bitgetWallet,
-    injectedWallet,
-    metaMaskWallet,
-    okxWallet,
-    walletConnectWallet
-} from "@rainbow-me/rainbowkit/wallets";
-import {arbitrum, base, bsc, mainnet, optimism, polygon} from "wagmi/chains";
-import {MatchMain,MatchTest} from "@matchain/matchid-sdk-react/chains";
 import {WagmiProvider} from "wagmi";
+
 
 function Nav() {
     const {isLogin} = useUserInfo()
@@ -68,7 +59,7 @@ function Nav() {
                 url: '/contact',
                 onActive: location.pathname === '/contact',
                 hidden: !isLogin
-            }
+            },
         ]
         return list
     }, [location.pathname, isLogin])
@@ -165,48 +156,34 @@ function RouterApp() {
         </div>
     </Router>
 }
-const wagmiConfig = getDefaultConfig({
-    appName: "MatchID",
-    projectId: "9ac6ea7e07860f04616fb311b447dee9",
-    wallets: [
-        {
-            groupName: "Recommended",
-            wallets: [
-                metaMaskWallet,
-                walletConnectWallet,
-                okxWallet,
-                bitgetWallet,
-                injectedWallet,
-            ],
-        },
-    ],
-    chains: [mainnet, polygon, optimism, arbitrum, base, MatchMain, MatchTest, bsc],
-});
+
 function App() {
     const {appid, locale, endpoints, walletType, backgroundColor, color} = useLocalStore()
 
     return <div style={{
         backgroundColor: backgroundColor,
         color: color
-    }}> <WagmiProvider config={wagmiConfig}><MatchProvider
-        appid={appid}
-        endpoints={endpoints}
-        locale={locale}
-        events={{
-            onLogin: (data) => {
-                console.log('events.onLogin', data)
-            },
-            onLogout: () => {
-                console.log('events.onLogout')
-            }
-        }}
-        wallet={{
-            type: walletType
-        }}
-    >
-        <RouterApp/>
-    </MatchProvider>
-    </WagmiProvider>
+    }}>
+        <WagmiProvider config={wagmiConfig}>
+            <MatchProvider
+                appid={appid}
+                endpoints={endpoints}
+                locale={locale}
+                events={{
+                    onLogin: (data) => {
+                        console.log('events.onLogin', data)
+                    },
+                    onLogout: () => {
+                        console.log('events.onLogout')
+                    }
+                }}
+                wallet={{
+                    type: walletType
+                }}
+            >
+                <RouterApp/>
+            </MatchProvider>
+        </WagmiProvider>
     </div>;
 }
 
