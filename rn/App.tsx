@@ -42,9 +42,7 @@ function SetUrl(props: {
 
 function App(): React.JSX.Element {
   const [showWebView, setShowWebView] = useState(false);
-  const [url, setUrl] = useState(
-    'http://192.168.31.71:5174/app/auth?back=1&appid=MID-E53wKKWTqNzK7ccC',
-  );
+  const [url, setUrl] = useState('https://auth.matchid.ai');
   const [auth, setAuth] = useState('');
   const handleOpenWebView = () => {
     if (url) {
