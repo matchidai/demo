@@ -14,7 +14,6 @@ import useLocalStore from "@/store/useLocalStore";
 import {LoginButton} from "@matchain/matchid-sdk-react/components";
 import UI from "@/pages/UI";
 import TgApp from "@/pages/TgApp";
-import Contact from "./pages/Contact";
 import {WagmiProvider} from "wagmi";
 
 
@@ -52,12 +51,6 @@ function Nav() {
                 name: 'Wallet',
                 url: '/wallet',
                 onActive: location.pathname === '/wallet',
-                hidden: !isLogin
-            },
-            {
-                name: 'Contact',
-                url: '/contact',
-                onActive: location.pathname === '/contact',
                 hidden: !isLogin
             },
         ]
@@ -150,7 +143,6 @@ function RouterApp() {
                 <Route element={<RoutePrivate/>}>
                     <Route path="/user" element={<User/>}/>
                     <Route path="/wallet" element={<Wallet/>}/>
-                    <Route path="/contact" element={<Contact/>}/>
                 </Route>
             </Routes>
         </div>
